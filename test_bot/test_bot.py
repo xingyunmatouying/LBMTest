@@ -285,11 +285,7 @@ def test_arasan() -> None:
     CONFIG["engine"]["ponder"] = False
     CONFIG["pgn_directory"] = "TEMP/arasan_game_record"
     logger.info("Downloading Arasan")
-    try:
-        download_arasan()
-    except Exception:
-        logger.exception("Could not download the Arasan chess engine")
-        pytest.skip("Could not download the Arasan chess engine")
+    download_arasan()
     win = run_bot(CONFIG, logging_level)
     logger.info("Finished Testing Arasan")
     assert win
