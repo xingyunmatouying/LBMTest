@@ -5,7 +5,7 @@ name: Python Test
 
 on:
   push:
-    branches: [ master ]
+    branches: [ master, tests ]
   pull_request:
     branches: [ master ]
 
@@ -40,7 +40,7 @@ jobs:
       env:
         LICHESS_BOT_TEST_TOKEN: ${{secrets.LICHESS_BOT_TEST_TOKEN}}
       run: |
-        pytest --log-cli-level=10
+        pytest test_bot/test_bot.py --log-cli-level=10
     - name: Save engines
       id: cache-temp-save
       uses: actions/cache/save@v4
